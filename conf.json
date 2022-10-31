@@ -1,0 +1,100 @@
+{
+  "log": {
+    "loglevel": "info"
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ],
+  "inbounds": [
+    {
+      "port": 8080,
+      "listen": "0.0.0.0",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "c81119fa-8a42-46ba-8efc-677f555a57f9",
+            "flow": "xtls-rprx-direct"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-vl",
+            "dest": 19090
+          },
+          {
+            "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-vm",
+            "dest": 21199
+          },
+          {
+            "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-tr",
+            "dest": 38322
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp"
+      }
+    },
+    {
+      "port": 19090,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "c81119fa-8a42-46ba-8efc-677f555a57f9"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-vl"
+        }
+      }
+    },
+    {
+      "port": 21199,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "c81119fa-8a42-46ba-8efc-677f555a57f9"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-vm"
+        }
+      }
+    },
+    {
+      "port": 38322,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "password": "c81119fa-8a42-46ba-8efc-677f555a57f9"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/c81119fa-8a42-46ba-8efc-677f555a57f9-tr"
+        }
+      }
+    }
+  ]
+}
