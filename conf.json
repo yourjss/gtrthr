@@ -41,7 +41,7 @@
     },
     {
       "port": 19090,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -60,7 +60,7 @@
     },
     {
       "port": 21199,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -79,7 +79,7 @@
     },
     {
       "port": 38322,
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "protocol": "trojan",
       "settings": {
         "clients": [
