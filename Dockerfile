@@ -1,5 +1,4 @@
-FROM nginx:alpine
-# FROM python:3.6-alpine
+FROM alpine
 
 WORKDIR /my_django
 
@@ -12,4 +11,4 @@ RUN apk update && \
 
 EXPOSE 8080
 
-CMD ["liblib", "-c","conf.json"]
+CMD ["liblib", "run","-config","conf.json"]
